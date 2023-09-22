@@ -4,11 +4,14 @@ a = {}
 b = {}
 c = {}
 
-def lhr(file):  
-    with open(file) as h:
-        r = reader(h)
-        for row in r:
-            a[row[0]] = float(row[1])
+def read_hotel_rates(file):
+    try:
+        with open(file, 'r') as h:
+            reader = csv.reader(h)
+            for row in reader:
+                a[row[0]] = float(row[1])
+    except FileNotFoundError:
+        print(f"Error: File '{file}' not found.")
 
 def ler(file): 
     with open(file) as e:
